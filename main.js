@@ -1,33 +1,27 @@
-const Mail = function () {
-	this.addClient = (obj) => {
-		obj.addMail(this);
+function Pacient() {
+	this._doctors = [];
+	this.addDoctor = (doctor) => {
+		this._doctors.push(doctor);
 	};
-	this._count = 0;
-	this.sendMsg = () => {
-		console.log('Msg sent', this._count += 1);
-	};
-};
-const Client = function () {
-	this.addMail = (mail) => {
-		this.mails.push(mail);
-	};
-	this.mails = [];
-	this.sendSpam = () => {
-		this.mails.forEach(function(mail){
-			mail.sendMsg();
+	this.deleteDoctor = (doctor) => {
+		this._doctors = this._doctors.filter((item) => {
+			return item.prof != doctor.prof;
 		});
-		console.log('sendMsg', this.mails);
 	};
+}
+
+function Doctor(prof) {
+	this.prof = prof;
 };
 
-const mail1 = new Mail;
-const mail2 = new Mail;
-const mail3 = new Mail;
+const vasia = new Pacient();
 
-const client = new Client();
-
-mail1.addClient(client);
-mail2.addClient(client);
+const herurg = new Doctor('herurg');
+const pediatr = new Doctor('pediatr');
 
 
-client.sendSpam();
+vasia.addDoctor(herurg);
+vasia.addDoctor(pediatr);
+console.log('vasia add', vasia);
+vasia.deleteDoctor(pediatr);
+console.log('vasia delete', vasia);
