@@ -12,6 +12,7 @@ const MailClient = function () {
 	this.sendSpam = () => {
 		this.mails.forEach(function(mail){
 			mail.sendMsg();
+			console.log('Mail send success!');
 		});
 	};
 };
@@ -22,8 +23,8 @@ const mail3 = new Mail;
 
 const client = new MailClient();
 
-mail1.addClient(client);
-mail2.addClient(client);
-
+client.addMail(mail1);
+client.addMail(mail2);
+client.addMail(mail3																																																																																																					);
 
 client.sendSpam();
